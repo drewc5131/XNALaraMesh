@@ -248,7 +248,6 @@ def makeNodesMaterial(xpsSettings, materialData, rootDir, mesh_da, meshInfo):
             node_tree.links.new(aoMixNode.outputs['Color'], shaderNode.inputs['Base Color'])
         elif (texType == TextureType.BUMP):
             imageNode.label = 'Bump Map'
-            imageNode.color_space = 'NONE'
             normalMapNode = node_tree.nodes.new(NORMAL_MAP_NODE)
             normalChannelsGroupNode = node_tree.nodes.new(NODE_GROUP)
             normalChannelsGroupNode.node_tree = bpy.data.node_groups[INVERT_CHANNEL_NODE]
@@ -262,7 +261,6 @@ def makeNodesMaterial(xpsSettings, materialData, rootDir, mesh_da, meshInfo):
             normalMapNode.location = imageNode.location + Vector((col_width * 5, 0))
         elif (texType == TextureType.SPECULAR):
             imageNode.label = 'Specular'
-            imageNode.color_space = 'NONE'
             rgbToBwNode = node_tree.nodes.new(RGB_TO_BW_NODE)
             #Math node to power texture
             mathNode = node_tree.nodes.new(SHADER_NODE_MATH)
@@ -308,7 +306,6 @@ def makeNodesMaterial(xpsSettings, materialData, rootDir, mesh_da, meshInfo):
             node_tree.links.new(emissionNode.outputs['Emission'], shaderAddNode.inputs[0])
         elif (texType == TextureType.MASK):
             imageNode.label = 'Bump Mask'
-            imageNode.color_space = 'NONE'
             imageNode.location = shaderNode.location + Vector((imagesPosX, imagesPosY * -4))
             mappingCoordNode.location = imageNode.location + Vector((-400, 0))
             maskGroupNode = node_tree.nodes.new(NODE_GROUP)
@@ -318,7 +315,6 @@ def makeNodesMaterial(xpsSettings, materialData, rootDir, mesh_da, meshInfo):
 
         elif (texType == TextureType.BUMP1):
             imageNode.label = 'Micro Bump 1'
-            imageNode.color_space = 'NONE'
             mappingCoordNode.scale =  (param1, param1, param1)
             channelsGroupNode = node_tree.nodes.new(NODE_GROUP)
             channelsGroupNode.node_tree = bpy.data.node_groups[INVERT_CHANNEL_NODE]
@@ -332,7 +328,6 @@ def makeNodesMaterial(xpsSettings, materialData, rootDir, mesh_da, meshInfo):
             bump1Image = channelsGroupNode
         elif (texType == TextureType.BUMP2):
             imageNode.label = 'Micro Bump 2'
-            imageNode.color_space = 'NONE'
             mappingCoordNode.scale =  (param2, param2, param2)
             channelsGroupNode = node_tree.nodes.new(NODE_GROUP)
             channelsGroupNode.node_tree = bpy.data.node_groups[INVERT_CHANNEL_NODE]
