@@ -325,7 +325,7 @@ def createArmature(autoIk):
         armature_da.display_type = 'STICK'
         armature_ob = bpy.data.objects.new("Armature", armature_da)
         armature_ob.show_in_front = True
-        armature_ob.data.use_auto_ik = autoIk
+        #armature_ob.data.use_auto_ik = autoIk
         return armature_ob
 
 
